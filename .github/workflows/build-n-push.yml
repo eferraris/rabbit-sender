@@ -23,5 +23,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: zoomagri/${{ github.event.repository.name }}:latest
+          tags: eferraris/${{ github.event.repository.name }}:latest
 
