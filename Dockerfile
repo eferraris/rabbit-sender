@@ -7,5 +7,5 @@ RUN mvn clean package -DskipTests
 
 FROM azul/zulu-openjdk-alpine:11.0.13-jre
 
-COPY --from=build /workspace/target/*.jar app.jar
+COPY --from=build /workspace/target/*dependencies.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
