@@ -1,0 +1,32 @@
+name: 'rabbit-sender'
+description: 'Used to send a message to a rabbit queue'
+inputs:
+  RABBIT_USERNAME:
+    description: 'Rabbit Username'
+    required: true
+    default: 'rabbit'
+  RABBIT_QUEUE_NAME:
+    description: 'Name for the queue'
+    required: true
+  MESSAGE:
+    description: 'Message to be sent'
+    required: true
+  RABBIT_PASSWORD:
+    description: 'Rabbit Password'
+    required: false
+  RABBIT_HOST:
+    description: 'Rabbit Hostname'
+    required: false
+  RABBIT_USE_SSL:
+    description: 'Use SSL'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.RABBIT_HOST }}
+    - ${{ inputs.RABBIT_USE_SSL }}
+    - ${{ inputs.RABBIT_PASSWORD }}
+    - ${{ inputs.RABBIT_USERNAME }}
+    - ${{ inputs.RABBIT_QUEUE_NAME }}
+    - ${{ inputs.MESSAGE }}
