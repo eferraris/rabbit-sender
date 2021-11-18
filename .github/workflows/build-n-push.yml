@@ -23,5 +23,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: eferraris/${{ github.event.repository.name }}:latest
+          tags: quiquefe/${{ github.event.repository.name }}:latest
 
