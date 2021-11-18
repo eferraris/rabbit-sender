@@ -9,7 +9,7 @@ This Action helps you to send a message to a queue on a RabbitMQ running Server.
 | RABBIT_PASSWORD | guest | RabbitMQ Password  |
 | RABBIT_HOST | localhost | RabbitMQ Host |
 | RABBIT_PORT | 5672 | RabbitMQ Port |
-| RABBIT_USE_SSL | false | If the RabbitMQ uses SSL |
+| RABBIT_USE_SSL | true | If the RabbitMQ uses SSL |
 | RABBIT_QUEUE_NAME | rabbit-sender | Name of the queue the message must arrive |
 | MESSAGE | Hello World! | Message you want to send |
 
