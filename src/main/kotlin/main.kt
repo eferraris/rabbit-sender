@@ -5,9 +5,9 @@ fun main() {
     val channel = connection.createChannel()
     val message = System.getenv("INPUT_MESSAGE")
         ?.toByteArray()
-        ?:throw Exception("message is required")
+        ?: "Hello World!".toByteArray()
     val queueName = System.getenv("INPUT_RABBIT_QUEUE_NAME")
-        ?: throw Exception("queue name is required")
+        ?: "rabbit-sender"
 
     try {
         channel.queueDeclare(queueName, false, false, false, null)
@@ -24,10 +24,10 @@ private fun connectionFactory(): ConnectionFactory {
     val factory = ConnectionFactory()
 
     factory.host = System.getenv("INPUT_RABBIT_HOST")?: "localhost"
-    factory.username = System.getenv("INPUT_RABBIT_USERNAME")?: throw Exception("username must be specified")
-    factory.password = System.getenv("INPUT_RABBIT_PASSWORD")?: ""
+    factory.username = System.getenv("INPUT_RABBIT_USERNAME")?: "guest"
+    factory.password = System.getenv("INPUT_RABBIT_PASSWORD")?: "guest"
     System.getenv("INPUT_RABBIT_USE_SSL")?.let { if ( it.toBoolean() ) factory.useSslProtocol() }
-    factory.port = System.getenv("INPUT_RABBIT_PORT")?.toInt()?: 5671
+    factory.port = System.getenv("INPUT_RABBIT_PORT")?.toInt()?: 5672
 
     return factory
 

@@ -1,4 +1,4 @@
-name: 'rabbit-sender'
+name: 'RabbitMQ Message Sender'
 description: 'Send a message to a queue on a RabbitMQ server'
 branding:
   icon: 'message-square'
@@ -6,14 +6,14 @@ branding:
 inputs:
   RABBIT_USERNAME:
     description: 'Rabbit Username'
-    required: true
+    required: false
     default: 'rabbit'
   RABBIT_QUEUE_NAME:
     description: 'Name for the queue'
-    required: true
+    required: false
   MESSAGE:
     description: 'Message to be sent'
-    required: true
+    required: false
   RABBIT_PASSWORD:
     description: 'Rabbit Password'
     required: false
@@ -22,6 +22,9 @@ inputs:
     required: false
   RABBIT_USE_SSL:
     description: 'Use SSL'
+    required: false
+  RABBIT_PORT:
+    description: 'RabbitMQ Port'
     required: false
 runs:
   using: 'docker'
@@ -32,4 +35,5 @@ runs:
     - ${{ inputs.RABBIT_PASSWORD }}
     - ${{ inputs.RABBIT_USERNAME }}
     - ${{ inputs.RABBIT_QUEUE_NAME }}
+    - ${{ inputs.RABBIT_PORT }}
     - ${{ inputs.MESSAGE }}

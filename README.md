@@ -13,9 +13,6 @@ This Action helps you to send a message to a queue on a RabbitMQ running Server.
 | RABBIT_QUEUE_NAME | rabbit-sender | Name of the queue the message must arrive |
 | MESSAGE | Hello World! | Message you want to send |
 
-
-To be able to access the management API you should use a Docker Image tag with Management (not used by default). You can check all the available RabbitMQ Docker Image Tags [here](https://hub.docker.com/_/rabbitmq/)
-
 ## Usage
 ```yaml
 - name: Publish message to RabbitMQ
