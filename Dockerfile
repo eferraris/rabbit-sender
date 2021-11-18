@@ -5,7 +5,4 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-FROM azul/zulu-openjdk-alpine:11.0.13-jre
-
-COPY --from=build /workspace/target/rabbit-sender-v1-jar-with-dependencies.jar app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","./target/rabbit-sender-v1-jar-with-dependencies.jar"]
