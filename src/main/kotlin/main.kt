@@ -3,10 +3,10 @@ import com.rabbitmq.client.ConnectionFactory
 fun main() {
     val connection = connectionFactory().newConnection()
     val channel = connection.createChannel()
-    val message = System.getenv("MESSAGE")
+    val message = System.getenv("INPUT_MESSAGE")
         ?.toByteArray()
         ?:throw Exception("message is required")
-    val queueName = System.getenv("RABBIT_QUEUE_NAME")
+    val queueName = System.getenv("INPUT_RABBIT_QUEUE_NAME")
         ?: throw Exception("queue name is required")
 
     try {
@@ -23,11 +23,11 @@ private fun connectionFactory(): ConnectionFactory {
 
     val factory = ConnectionFactory()
 
-    factory.host = System.getenv("RABBIT_HOST")?: "localhost"
-    factory.username = System.getenv("RABBIT_USERNAME")?: throw Exception("username must be specified")
-    factory.password = System.getenv("RABBIT_PASSWORD")?: ""
-    System.getenv("RABBIT_USE_SSL")?.let { if ( it.toBoolean() ) factory.useSslProtocol() }
-    factory.port = System.getenv("RABBIT_PORT")?.toInt()?: 5671
+    factory.host = System.getenv("INPUT_RABBIT_HOST")?: "localhost"
+    factory.username = System.getenv("INPUT_RABBIT_USERNAME")?: throw Exception("username must be specified")
+    factory.password = System.getenv("INPUT_RABBIT_PASSWORD")?: ""
+    System.getenv("INPUT_RABBIT_USE_SSL")?.let { if ( it.toBoolean() ) factory.useSslProtocol() }
+    factory.port = System.getenv("INPUT_RABBIT_PORT")?.toInt()?: 5671
 
     return factory
 
