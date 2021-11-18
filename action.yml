@@ -6,31 +6,31 @@ branding:
 inputs:
   RABBIT_USERNAME:
     description: 'Rabbit Username'
-    required: true
+    required: false
     default: 'guest'
   RABBIT_PASSWORD:
     description: 'Rabbit Password'
-    required: true
+    required: false
     default: 'guest'
   RABBIT_HOST:
     description: 'Rabbit Hostname'
-    required: true
+    required: false
     default: 'localhost'
   RABBIT_PORT:
     description: 'RabbitMQ Port'
-    required: true
+    required: false
     default: '5672'
   RABBIT_USE_SSL:
     description: 'Use SSL'
-    required: true
+    required: false
     default: 'true'
   RABBIT_QUEUE_NAME:
     description: 'Name for the queue'
-    required: true
+    required: false
     default: 'rabbit-sender'
   MESSAGE:
     description: 'Message to be sent'
-    required: true
+    required: false
     default: 'Hello World!'
 runs:
   using: 'docker'
