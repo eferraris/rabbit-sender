@@ -1,5 +1,7 @@
 name: 'rabbit-sender'
-description: 'Used to send a message to a rabbit queue'
+description: 'Send a message to a queue on a RabbitMQ server'
+icon: message-square
+color: green
 inputs:
   RABBIT_USERNAME:
     description: 'Rabbit Username'
