@@ -6,36 +6,28 @@ branding:
 inputs:
   RABBIT_USERNAME:
     description: 'Rabbit Username'
-    required: true
-    default: 'guest'
+    required: false
   RABBIT_PASSWORD:
     description: 'Rabbit Password'
-    required: true
-    default: 'guest'
+    required: false
   RABBIT_HOST:
     description: 'Rabbit Hostname'
-    required: true
-    default: 'localhost'
+    required: false
   RABBIT_PORT:
     description: 'RabbitMQ Port'
-    required: true
-    default: '5672'
+    required: false
   RABBIT_USE_SSL:
     description: 'Use SSL'
-    required: true
-    default: 'true'
+    required: false
   RABBIT_QUEUE_NAME:
     description: 'Name for the queue'
-    required: true
-    default: 'rabbit-sender'
+    required: false
   MESSAGE:
     description: 'Message to be sent'
-    required: true
-    default: 'Hello World!'
+    required: false
   DURABLE:
     description: 'Durability for the queue'
-    required: true
-    default: 'true'
+    required: false
 runs:
   using: 'docker'
   image: 'docker://quiquefe/rabbit-sender:latest'
