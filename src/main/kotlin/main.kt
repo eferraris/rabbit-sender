@@ -5,9 +5,10 @@ fun main() {
     val channel = connection.createChannel()
     val message = System.getenv("INPUT_MESSAGE")!!.toByteArray()
     val queueName = System.getenv("INPUT_RABBIT_QUEUE_NAME")
+    val durable = System.getenv("INPUT_RABBIT_QUEUE_NAME")!!.toBoolean()
 
     try {
-        channel.queueDeclare(queueName, false, false, false, null)
+        channel.queueDeclare(queueName, durable, false, false, null)
         channel.basicPublish("", queueName, null, message)
     } finally {
         channel.close()

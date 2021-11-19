@@ -12,6 +12,7 @@ This Action helps you to send a message to a queue on a RabbitMQ running Server.
 | RABBIT_USE_SSL | true | If the RabbitMQ uses SSL |
 | RABBIT_QUEUE_NAME | rabbit-sender | Name of the queue the message must arrive |
 | MESSAGE | Hello World! | Message you want to send |
+| DURABLE | true | Queue durability |
 
 ## Usage
 ```yaml
@@ -25,4 +26,5 @@ This Action helps you to send a message to a queue on a RabbitMQ running Server.
     RABBIT_PASSWORD: ${{ secrets.RABBIT_PASSWORD }}
     RABBIT_PORT: 5671
     RABBIT_USE_SSL: true
+    DURABLE: false
 ```

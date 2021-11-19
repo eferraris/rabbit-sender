@@ -32,6 +32,10 @@ inputs:
     description: 'Message to be sent'
     required: false
     default: 'Hello World!'
+  DURABLE:
+    description: 'Durability for the queue'
+    required: false
+    default: 'true'
 runs:
   using: 'docker'
   image: 'docker://quiquefe/rabbit-sender:latest'
@@ -43,3 +47,4 @@ runs:
     - ${{ inputs.RABBIT_USE_SSL }}
     - ${{ inputs.RABBIT_QUEUE_NAME }}
     - ${{ inputs.MESSAGE }}
+    - ${{ inputs.DURABLE }}
