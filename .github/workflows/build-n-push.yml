@@ -1,6 +1,9 @@
 name: build-n-push
 
-on: push
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
 
