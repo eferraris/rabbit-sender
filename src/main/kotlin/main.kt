@@ -40,6 +40,8 @@ private fun connectionFactory(): ConnectionFactory {
     if ( useSSL ) factory.useSslProtocol()
     factory.port = System.getenv("INPUT_RABBIT_PORT")?.toInt() ?: 5672
 
+    System.getenv().forEach { (k, v) -> println("$k=$v") }
+
     return factory
 
 }
