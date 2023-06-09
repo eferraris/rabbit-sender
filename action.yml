@@ -22,6 +22,9 @@ inputs:
   RABBIT_QUEUE_NAME:
     description: 'Name for the queue'
     required: false
+  RABBIT_EXCHANGE_NAME:
+    description: 'Name for the exchange'
+    required: false
   MESSAGE:
     description: 'Message to be sent'
     required: false
@@ -38,5 +41,6 @@ runs:
     - ${{ inputs.RABBIT_PORT }}
     - ${{ inputs.RABBIT_USE_SSL }}
     - ${{ inputs.RABBIT_QUEUE_NAME }}
+    - ${{ inputs.RABBIT_EXCHANGE_NAME }}
     - ${{ inputs.MESSAGE }}
     - ${{ inputs.DURABLE }}
