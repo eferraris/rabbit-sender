@@ -7,19 +7,18 @@ fun main() {
         ?.toByteArray()
         ?:"Hello World!".toByteArray()
     val queueName = System.getenv("INPUT_RABBIT_QUEUE_NAME")?: "rabbit-sender"
-    val exchangeName = System.getenv("INPUT_RABBIT_EXCHANGE_NAME")
-    val durable = System.getenv("INPUT_DURABLE")?.toBoolean() ?: true
+    val exchangeName = System.getenv("INPUT_RABBIT_EXCHANGE_NAME")?: ""
+    val durable = System.getenv("INPUT_DURABLE")?.toBoolean()?: true
 
     try {
-        if ( exchangeName.isNotEmpty() )
+        if ( exchangeName.isNotEmpty() ) {
             channel.exchangeDeclare(exchangeName, "topic", durable)
-        else
-            channel.queueDeclare(queueName, durable, false, false, null)
-
-        if ( exchangeName.isNotEmpty() )
             channel.basicPublish(exchangeName, "*", null, message)
-        else
+        } else {
+            channel.queueDeclare(queueName, durable, false, false, null)
             channel.basicPublish("", queueName, null, message)
+        }
+
     } finally {
         channel.close()
         connection.close()
