@@ -1,6 +1,16 @@
 import com.rabbitmq.client.ConnectionFactory
 
 fun main() {
+    println("INPUT_MESSAGE: ${getEnvOrNull("INPUT_MESSAGE")}")
+    println("INPUT_RABBIT_QUEUE_NAME: ${getEnvOrNull("INPUT_RABBIT_QUEUE_NAME")}")
+    println("INPUT_RABBIT_EXCHANGE_NAME: ${getEnvOrNull("INPUT_RABBIT_EXCHANGE_NAME")}")
+    println("INPUT_DURABLE: ${getEnvOrNull("INPUT_DURABLE")}")
+    println("INPUT_RABBIT_USE_SSL: ${getEnvOrNull("INPUT_RABBIT_USE_SSL")}")
+    println("INPUT_RABBIT_HOST: ${getEnvOrNull("INPUT_RABBIT_HOST")}")
+    println("INPUT_RABBIT_USERNAME: ${getEnvOrNull("INPUT_RABBIT_USERNAME")}")
+    println("INPUT_RABBIT_PASSWORD: ${getEnvOrNull("INPUT_RABBIT_PASSWORD")}")
+    println("INPUT_RABBIT_PORT: ${getEnvOrNull("INPUT_RABBIT_PORT")}")
+
     val connection = connectionFactory().newConnection()
     val channel = connection.createChannel()
     val message = getEnvOrNull("INPUT_MESSAGE")
