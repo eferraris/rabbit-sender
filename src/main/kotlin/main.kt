@@ -2,6 +2,7 @@ import com.rabbitmq.client.ConnectionFactory
 
 fun main() {
     println("INPUT_MESSAGE: ${getEnvOrNull("INPUT_MESSAGE")}")
+    println("INPUT_ROUTING_KEY: ${getEnvOrNull("INPUT_ROUTING_KEY")}")
     println("INPUT_RABBIT_QUEUE_NAME: ${getEnvOrNull("INPUT_RABBIT_QUEUE_NAME")}")
     println("INPUT_RABBIT_EXCHANGE_NAME: ${getEnvOrNull("INPUT_RABBIT_EXCHANGE_NAME")}")
     println("INPUT_DURABLE: ${getEnvOrNull("INPUT_DURABLE")}")
@@ -16,6 +17,7 @@ fun main() {
     val message = getEnvOrNull("INPUT_MESSAGE")
         ?.toByteArray()
         ?:"Hello World!".toByteArray()
+    val routingKey = getEnvOrNull("INPUT_ROUTING_KEY")?: "*"
     val queueName = getEnvOrNull("INPUT_RABBIT_QUEUE_NAME")?: "rabbit-sender"
     val exchangeName = getEnvOrNull("INPUT_RABBIT_EXCHANGE_NAME")?: ""
     val durable = getEnvOrNull("INPUT_DURABLE")?.toBoolean()?: true
@@ -23,7 +25,7 @@ fun main() {
     try {
         if ( exchangeName.isNotEmpty() ) {
             channel.exchangeDeclare(exchangeName, "topic", durable)
-            channel.basicPublish(exchangeName, "*", null, message)
+            channel.basicPublish(exchangeName, routingKey, null, message)
         } else {
             channel.queueDeclare(queueName, durable, false, false, null)
             channel.basicPublish("", queueName, null, message)

@@ -28,6 +28,9 @@ inputs:
   MESSAGE:
     description: 'Message to be sent'
     required: false
+  ROUTING_KEY:
+    description: 'Routing key for the message'
+    required: false
   DURABLE:
     description: 'Durability for the queue'
     required: false
@@ -43,4 +46,5 @@ runs:
     - ${{ inputs.RABBIT_QUEUE_NAME }}
     - ${{ inputs.RABBIT_EXCHANGE_NAME }}
     - ${{ inputs.MESSAGE }}
+    - ${{ inputs.ROUTING_KEY }}
     - ${{ inputs.DURABLE }}
